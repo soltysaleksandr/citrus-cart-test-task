@@ -1,0 +1,372 @@
+// @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/src/assets/fonts/Ubuntu-Bold.ttf);
+}
+
+@mixin fontFamilySecondary {
+  font-family: "Ubuntu", sans-serif;
+}
+
+$primaryGreen: #7eb105;
+$primaryOrange: #f6731c;
+$primaryGrey: #999999;
+$primaryBlack: #212121;
+$primaryBorderColor: #ebebeb;
+
+.page {
+  font-family: Arial, sans-serif;
+}
+
+.cart-container {
+  width: 250px;
+  position: relative;
+  margin: 50px auto 0;
+}
+
+.cart {
+  width: 250px;
+  position: absolute;
+  padding: 16px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid $primaryBorderColor;
+  border-right: 1px solid $primaryBorderColor;
+
+  &_hovered:hover {
+    border: 1px solid $primaryGreen;
+    border-radius: 3px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+    .cart__row_display_onhover {
+      display: block;
+    }
+    .cart__row_visibility_onhover {
+      visibility: visible;
+    }
+    .cart__row_hidden_onhover {
+      visibility: hidden;
+    }
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+
+    &_display_onhover {
+      display: none;
+    }
+
+    &_visibility_onhover {
+      visibility: hidden;
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    display: flex;
+
+    &_position_translate {
+      transform: translate(0%, -50%);
+    }
+
+    &_justify_between {
+      justify-content: space-between;
+    }
+
+    &_margin_top_5 {
+      margin-top: 5px;
+    }
+  }
+
+  &__color-pick {
+    margin-right: 12px;
+  }
+
+  &__product-article {
+    margin-top: 6px;
+  }
+
+  &__stock {
+    margin-top: 8px;
+  }
+  &__product-title {
+    margin-top: 8px;
+  }
+  &__product-capacity-list {
+    margin-top: 4px;
+  }
+
+  &__options {
+    margin-top: 12px;
+  }
+  &__promotion-first-purchase {
+    margin-top: 24px;
+  }
+  &__short-descriptions {
+    margin-top: 16px;
+  }
+}
+
+.color-pick {
+  width: 18px;
+  height: 18px;
+  background: black;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+
+  &_hovered:hover {
+    box-shadow: 0px 0px 0px 2px $primaryGreen;
+  }
+
+  &_active {
+    box-shadow: 0px 0px 0px 2px $primaryGreen;
+  }
+}
+
+.rating {
+  height: 12px;
+  display: flex;
+
+  &__star-outer_margin_right {
+    margin-right: 3px;
+  }
+
+  &__star {
+    display: block;
+    stroke: #dedede;
+    stroke-width: 0.5px;
+  }
+
+  &__star_hovered:hover {
+    fill: $primaryOrange;
+    stroke: $primaryOrange;
+  }
+
+  &__star_active {
+    fill: $primaryOrange;
+    stroke: $primaryOrange;
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: bold;
+    color: $primaryGrey;
+  }
+}
+
+.reviews {
+  display: flex;
+
+  &__icon {
+    height: 12px;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 12px;
+    color: $primaryGreen;
+    text-decoration: underline;
+  }
+}
+
+.product-article {
+  font-size: 10px;
+  line-height: 10px;
+  color: $primaryGrey;
+
+  &__num-code {
+    text-transform: uppercase;
+    color: $primaryBlack;
+  }
+}
+
+.stock {
+  display: flex;
+  font-size: 12px;
+  line-height: 12px;
+
+  &_in-stock {
+    color: $primaryGreen;
+  }
+
+  &_qty-limited {
+    color: $primaryOrange;
+  }
+
+  &_out-of-stock {
+    color: $primaryGrey;
+  }
+
+  &__icon {
+    height: 12px;
+    margin-right: 8px;
+
+    &::before {
+      content: "\2022";
+      vertical-align: middle;
+      font-size: 31px;
+    }
+  }
+}
+
+.product-title {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: normal;
+  color: $primaryBlack;
+}
+
+.product-capacity-list {
+  display: flex;
+  font-size: 14px;
+
+  &__item {
+    margin-right: 12px;
+    color: $primaryGreen;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+
+    &_selected {
+      background: #eefbe0;
+      color: $primaryBlack;
+      text-decoration: none;
+    }
+  }
+}
+.promotion-trade-in {
+  color: $primaryOrange;
+  font-size: 10px;
+}
+
+.product-price {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ebebeb;
+
+  &__old-price {
+    margin-right: 5px;
+    color: $primaryGrey;
+    font-size: 14px;
+    text-decoration: line-through;
+    @include fontFamilySecondary();
+  }
+
+  &__new-price {
+    color: $primaryOrange;
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: bold;
+    @include fontFamilySecondary();
+  }
+
+  &__currency {
+    font-size: 13px;
+    line-height: 13px;
+    vertical-align: top;
+    @include fontFamilySecondary();
+  }
+
+  &__savings {
+    color: $primaryGreen;
+    font-size: 12px;
+    line-height: normal;
+  }
+
+  &__saving-price {
+    font-weight: bold;
+  }
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.promotion-first-purchase {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    background: url('/src/assets/images/sale-icon.png') no-repeat;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  &__title {
+    color: $primaryBlack;
+    font-size: 12px;
+    line-height: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    @include fontFamilySecondary();
+  }
+
+  &__text {
+    color: $primaryOrange;
+    font-size: 11px;
+    line-height: normal;
+    font-weight: bold;
+  }
+}
+.short-descriptions {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 0;
+    color: $primaryBlack;
+    font-size: 14px;
+  }
+
+  &__list {
+    margin-bottom: 0;
+    margin-left: 5px;
+    padding-left: 0;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 20px;
+    display: block;
+    color: $primaryGrey;
+    font-size: 14px;
+    line-height: 18px;
+
+    &_list_style::before {
+      content: "\2022";
+      position: absolute;
+      left: 0;
+      font-size: 24px;
+      line-height: 18px;
+    }
+  }
+}
+
+.icon {
+  fill: $primaryGrey;
+
+  &_youtube {
+    margin-right: 20px;
+  }
+
+  &_hovered:hover {
+    fill: $primaryGreen;
+    cursor: pointer;
+  }
+
+  & > svg {
+    display: block;
+  }
+}
